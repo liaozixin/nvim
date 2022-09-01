@@ -25,6 +25,10 @@ return require('packer').startup(function()
   }
   use 'jiangmiao/auto-pairs'
   use {'neoclide/coc.nvim', branch = 'release'}
+  use 'skywind3000/asyncrun.vim'
+  use 'skywind3000/asynctasks.vim'
+  use 'voldikss/vim-floaterm'
+  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
   if packer_bootstrap then
     require('packer').sync()

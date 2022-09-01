@@ -8,7 +8,6 @@
 " vim.fn is a table representing function
 " vim.api is colleciton of API functions
 " for the most part, you just use vim.opt to set value
-
 lua require('basic')
 lua require('plugins')
 
@@ -17,6 +16,8 @@ lua require('plugin-config/nvim-lualine')
 lua require('plugin-config/nvim-tree')
 lua require('plugin-config/AutoPair')
 lua require('plugin-config/coc')
+lua require('plugin-config/vim-floaterm')
+lua require('plugin-config/bufferline')
 
 lua require('keymapping')
 
