@@ -16,7 +16,6 @@ lua require('plugin-config/nvim-lualine')
 lua require('plugin-config/nvim-tree')
 lua require('plugin-config/AutoPair')
 lua require('plugin-config/coc')
-lua require('plugin-config/vim-floaterm')
 lua require('plugin-config/bufferline')
 
 lua require('keymapping')

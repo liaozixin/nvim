@@ -57,8 +57,6 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
   sync_root_with_cwd = false,
   reload_on_bufenter = false,
   respect_buf_cwd = false,
-  on_attach = "disable", -- function(bufnr). If nil, will use the deprecated mapping strategy
-  remove_keymaps = false, -- boolean (disable totally or not) or list of key (lhs)
   view = {
     adaptive_size = false,
     centralize_selection = false,
@@ -70,22 +68,10 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     number = false,
     relativenumber = false,
     signcolumn = "yes",
-    -- @deprecated
     mappings = {
       custom_only = false,
       list = {
         -- user mappings go here
-      },
-    },
-    float = {
-      enable = false,
-      open_win_config = {
-        relative = "editor",
-        border = "rounded",
-        width = 30,
-        height = 30,
-        row = 1,
-        col = 1,
       },
     },
   },
@@ -98,7 +84,6 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     root_folder_modifier = ":~",
     indent_markers = {
       enable = false,
-      inline_arrows = true,
       icons = {
         corner = "└",
         edge = "│",
@@ -176,7 +161,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     exclude = {},
   },
   filesystem_watchers = {
-    enable = true,
+    enable = false,
     debounce_delay = 50,
   },
   git = {
@@ -195,15 +180,6 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     expand_all = {
       max_folder_discovery = 300,
       exclude = {},
-    },
-    file_popup = {
-      open_win_config = {
-        col = 1,
-        row = 1,
-        relative = "cursor",
-        border = "shadow",
-        style = "minimal",
-      },
     },
     open_file = {
       quit_on_open = false,
@@ -244,10 +220,4 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     },
   },
 } -- END_DEFAULT_OPTS
-
--- keymap
-local keymap = vim.api.nvim_set_keymap
-local opts = {noremap = true, silent = false}
-keymap("", "<C-n>", "<cmd>NvimTreeToggle<CR>", opts);
-
 

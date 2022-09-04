@@ -39,3 +39,19 @@ keymap("", "tc", "<cmd>tabclose<CR>", default_opts)
 keymap("i", "<C-s>", "<cmd>wa<CR>", default_opts)
 keymap("n", "<C-s>", "<cmd>wa<CR>", default_opts)
 
+-- nvim-tree
+keymap('', "<C-n>", "<cmd>NvimTreeToggle<CR>", default_opts);
+
+--bufferline
+keymap('', '<M-Left>', ':BufferLineCyclePrev<CR>', default_opts)
+keymap('', '<M-Right>', ':BufferLineCycleNext<CR>', default_opts)
+
+--vim-floaterm
+keymap("n", "t", "<cmd>FloatermToggle<CR>", default_opts)
+keymap("t", "T", [[<C-\><C-n><cmd>FloatermToggle<CR>]], default_opts)
+
+--coc
+vim.cmd([[
+  inoremap <silent><expr> <C-e> coc#pum#visible() ? coc#pum#cancel() : "\<C-e>"
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+]])
