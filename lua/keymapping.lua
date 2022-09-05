@@ -36,8 +36,8 @@ keymap("n", "th", "<cmd>tabp<CR>", default_opts)
 keymap("", "tc", "<cmd>tabclose<CR>", default_opts)
 
 -- save all
-keymap("i", "<C-s>", "<cmd>wa<CR>", default_opts)
-keymap("n", "<C-s>", "<cmd>wa<CR>", default_opts)
+keymap("i", "<C-s>", "<cmd>wa!<CR>", default_opts)
+keymap("n", "<C-s>", "<cmd>wa!<CR>", default_opts)
 
 -- nvim-tree
 keymap('', "<C-n>", "<cmd>NvimTreeToggle<CR>", default_opts);
