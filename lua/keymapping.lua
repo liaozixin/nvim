@@ -47,7 +47,7 @@ keymap('', '<M-Left>', ':BufferLineCyclePrev<CR>', default_opts)
 keymap('', '<M-Right>', ':BufferLineCycleNext<CR>', default_opts)
 
 --vim-floaterm
-keymap("n", "t", "<cmd>FloatermToggle<CR>", default_opts)
+keymap("n", "t", "<cmd>wa!<CR><cmd>FloatermToggle<CR>", default_opts)
 keymap("t", "T", [[<C-\><C-n><cmd>FloatermToggle<CR>]], default_opts)
 
 --coc
