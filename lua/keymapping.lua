@@ -55,3 +55,10 @@ vim.cmd([[
   inoremap <silent><expr> <C-e> coc#pum#visible() ? coc#pum#cancel() : "\<C-e>"
   inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 ]])
+
+--asynctasks
+keymap('', '<F5>', "<cmd>AsyncTask project-build<CR>", default_opts)
+keymap('', '<F4>', "<cmd>AsyncTask file-build<CR>", default_opts)
+keymap('', '<F9>', "<cmd>AsyncTask project-run<CR>", default_opts)
+
+
