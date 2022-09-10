@@ -57,7 +57,7 @@ vim.cmd([[
 ]])
 
 --asynctasks
-keymap('', '<F5>', "<cmd>AsyncTask project-build<CR>", default_opts)
+keymap('', '<F5>', "<cmd>AsyncTask compilefile-build<CR>", default_opts)
 keymap('', '<F4>', "<cmd>AsyncTask file-build<CR>", default_opts)
 keymap('', '<F9>', "<cmd>AsyncTask project-run<CR>", default_opts)
 
