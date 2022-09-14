@@ -18,6 +18,7 @@ lua require('plugin-config/AutoPair')
 lua require('plugin-config/coc')
 lua require('plugin-config/bufferline')
 lua require('plugin-config/asynctask')
+lua require('plugin-config/taglist')
 
 lua require('keymapping')
 
