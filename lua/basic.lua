@@ -71,7 +71,10 @@ vim.o.splitright = true
 -- 显示tabline
 vim.o.showtabline = 2
 
+--ctags
+vim.cmd([[
 
+]])
 
 
 

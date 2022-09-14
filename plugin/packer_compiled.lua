@@ -9,23 +9,26 @@ vim.api.nvim_command('packadd packer.nvim')
 
 local no_errors, error_msg = pcall(function()
 
-  local time
-  local profile_info
-  local should_profile = false
-  if should_profile then
-    local hrtime = vim.loop.hrtime
-    profile_info = {}
-    time = function(chunk, start)
-      if start then
-        profile_info[chunk] = hrtime()
-      else
-        profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
-      end
+_G._packer = _G._packer or {}
+_G._packer.inside_compile = true
+
+local time
+local profile_info
+local should_profile = false
+if should_profile then
+  local hrtime = vim.loop.hrtime
+  profile_info = {}
+  time = function(chunk, start)
+    if start then
+      profile_info[chunk] = hrtime()
+    else
+      profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
     end
-  else
-    time = function(chunk, start) end
   end
-  
+else
+  time = function(chunk, start) end
+end
+
 local function save_profiles(threshold)
   local sorted_times = {}
   for chunk_name, time_taken in pairs(profile_info) do
@@ -38,14 +41,16 @@ local function save_profiles(threshold)
       results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
     end
   end
+  if threshold then
+    table.insert(results, '(Only showing plugins that took longer than ' .. threshold .. ' ms ' .. 'to load)')
+  end
 
-  _G._packer = _G._packer or {}
   _G._packer.profile_output = results
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "C:\\Users\\Polaris\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\share\\lua\\5.1\\?.lua;C:\\Users\\Polaris\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\share\\lua\\5.1\\?\\init.lua;C:\\Users\\Polaris\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\luarocks\\rocks-5.1\\?.lua;C:\\Users\\Polaris\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\luarocks\\rocks-5.1\\?\\init.lua"
-local install_cpath_pattern = "C:\\Users\\Polaris\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\lua\\5.1\\?.so"
+local package_path_str = "C:\\Users\\15711\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\share\\lua\\5.1\\?.lua;C:\\Users\\15711\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\share\\lua\\5.1\\?\\init.lua;C:\\Users\\15711\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\luarocks\\rocks-5.1\\?.lua;C:\\Users\\15711\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\luarocks\\rocks-5.1\\?\\init.lua"
+local install_cpath_pattern = "C:\\Users\\15711\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\lua\\5.1\\?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -71,67 +76,79 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["asyncrun.vim"] = {
     loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\asyncrun.vim",
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\asyncrun.vim",
     url = "https://github.com/skywind3000/asyncrun.vim"
   },
   ["asynctasks.vim"] = {
     loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\asynctasks.vim",
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\asynctasks.vim",
     url = "https://github.com/skywind3000/asynctasks.vim"
   },
   ["auto-pairs"] = {
     loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\auto-pairs",
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
   },
   ["bufferline.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\bufferline.nvim",
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
   ["coc.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\coc.nvim",
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine.nvim",
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-tree.lua",
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-tree.lua",
     url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  taglist = {
+    loaded = true,
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\taglist",
+    url = "https://github.com/yegappan/taglist"
   },
   ["vim-floaterm"] = {
     loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-floaterm",
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-floaterm",
     url = "https://github.com/voldikss/vim-floaterm"
   },
   ["vscode.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vscode.nvim",
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vscode.nvim",
     url = "https://github.com/Mofiqul/vscode.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+
+_G._packer.inside_compile = false
+if _G._packer.needs_bufread == true then
+  vim.cmd("doautocmd BufRead")
+end
+_G._packer.needs_bufread = false
+
 if should_profile then save_profiles() end
 
 end)
