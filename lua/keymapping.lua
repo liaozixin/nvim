@@ -61,4 +61,13 @@ keymap('', '<F5>', "<cmd>AsyncTask compilefile-build<CR>", default_opts)
 keymap('', '<F4>', "<cmd>AsyncTask file-build<CR>", default_opts)
 keymap('', '<F9>', "<cmd>AsyncTask project-run<CR>", default_opts)
 
+--taglist
+keymap('n', '<F2>', "<cmd>TlistToggle<CR>", default_opts)
+
+
+
+
+
+
+
 
