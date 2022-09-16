@@ -10,7 +10,7 @@ keymap("i", "jj", "<ESC>", default_opts)
 -- use "H" to line head
 keymap("n", "H", "^", default_opts)
 
--- use "L" to line tail
+--use "L" to line tail
 keymap("n", "L", "$", default_opts)
 
 -- up a line 
@@ -54,6 +54,22 @@ keymap("t", "T", [[<C-\><C-n><cmd>FloatermToggle<CR>]], default_opts)
 vim.cmd([[
   inoremap <silent><expr> <C-e> coc#pum#visible() ? coc#pum#cancel() : "\<C-e>"
   inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+  nmap <silent> [g <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+  " GoTo code navigation.
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+
+  " Symbol renaming.
+  nmap <leader>rn <Plug>(coc-rename)
+
+  " Formatting selected code.
+  xmap <leader>f  <Plug>(coc-format-selected)
+  nmap <leader>f  <Plug>(coc-format-selected)
+
 ]])
 
 --asynctasks
