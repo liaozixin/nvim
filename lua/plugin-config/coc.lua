@@ -11,13 +11,6 @@ vim.cmd([[
   " Add `:Format` command to format current buffer.
   command! -nargs=0 Format :call CocActionAsync('format')
   
-  augroup mygroup
-    autocmd!
-    " Setup formatexpr specified filetype(s).
-    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-    " Update signature help on jump placeholder.
-    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-  augroup end
 ]])
 
 
