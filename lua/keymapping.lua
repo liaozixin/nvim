@@ -15,9 +15,11 @@ keymap("n", "L", "$", default_opts)
 
 -- up a line 
 keymap("n", "<M-Up>", "kddpk", default_opts)
+keymap("v", "<M-Up>", "dkkp", default_opts)
 
 -- dowm a line
 keymap("n", "<M-Down>", "ddp", default_opts)
+keymap("v", "<M-Down>", "dp", default_opts)
 
 -- copy to system's clipboard
 keymap("v", "<C-c>", [["*y]], default_opts)
