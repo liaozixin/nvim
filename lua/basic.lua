@@ -15,12 +15,12 @@ vim.opt.cursorline = true
 -- 显示左侧图标指示列
 vim.opt.signcolumn = "yes"
 
--- 缩进2空格等于1tab
-vim.o.tabstop = 2
-vim.bo.tabstop = 2
-vim.o.softtabstop = 2
+-- 缩进4空格等于1tab
+vim.o.tabstop = 4
+vim.bo.tabstop = 4
+vim.o.softtabstop = 4
 vim.o.shiftround = true 
-vim.o.shiftwidth = 2
+vim.o.shiftwidth = 4
 
 -- 新行对齐当前行，空格替代tab
 vim.o.expandtab = true

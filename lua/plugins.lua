@@ -30,6 +30,14 @@ return require('packer').startup(function()
   use 'voldikss/vim-floaterm'
   use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
   use 'yegappan/taglist'
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
+
 
   if packer_bootstrap then
     require('packer').sync()
