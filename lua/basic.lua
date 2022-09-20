@@ -71,8 +71,10 @@ vim.o.splitright = true
 -- 显示tabline
 vim.o.showtabline = 2
 
+--autocmd
 vim.cmd([[
-  
+"format
+autocmd BufWritePre *.c,*.cpp,*.h,*.hpp,*.cu,*.cuh,*.py :Fotmat
 ]])
 
 
