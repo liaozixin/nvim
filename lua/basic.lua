@@ -74,7 +74,10 @@ vim.o.showtabline = 2
 --autocmd
 vim.cmd([[
 "format
-autocmd BufWritePre *.c,*.cpp,*.h,*.hpp,*.cu,*.cuh,*.py :Fotmat
+augroup _auto_format
+    autocmd!
+    autocmd BufWritePre *.c,*.cpp,*.cu,*.h,*.hpp,*.cuh,*.py :Format
+augroup end
 ]])
 
 
