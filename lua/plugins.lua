@@ -39,6 +39,7 @@ return require('packer').startup(function()
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use "lukas-reineke/indent-blankline.nvim"
   use 'p00f/nvim-ts-rainbow'
+  use 'djoshea/vim-autoread'
 
   if packer_bootstrap then
     require('packer').sync()

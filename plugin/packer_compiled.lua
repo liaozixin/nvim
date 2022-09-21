@@ -150,6 +150,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\taglist",
     url = "https://github.com/yegappan/taglist"
   },
+  ["vim-autoread"] = {
+    loaded = true,
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-autoread",
+    url = "https://github.com/djoshea/vim-autoread"
+  },
   ["vim-floaterm"] = {
     loaded = true,
     path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-floaterm",
