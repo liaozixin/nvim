@@ -22,6 +22,10 @@ lua require('plugin-config/taglist')
 lua require('plugin-config/nvim-ts-context-commentstring')
 lua require('plugin-config/indent-blankline')
 
+"my scripts
+lua require('scripts/easy-move-lines')
+
+
 lua require('keymapping')
 
 colorscheme vscode
