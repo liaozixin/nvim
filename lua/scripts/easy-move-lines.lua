@@ -20,7 +20,8 @@ local up_lines = function()
     buf = vim.api.nvim_get_current_buf()
     if(mode == "V") then
         local lines_range = get_select_lines(buf)
-        if(lines_range[1] - 1 >= 0) then
+                
+        if(lines_range[1] - 2 == 0) then
             vim.api.nvim_buf_set_lines(buf, lines_range[1]-1, lines_range[2], null, {})
             vim.api.nvim_buf_set_lines(buf, lines_range[1]-2, lines_range[1]-2, null, lines_range[3])
             vim.api.nvim_input("<ESC>")
@@ -31,7 +32,17 @@ local up_lines = function()
             for i=0,lines_range[4] - 1,1 do
                 vim.api.nvim_input("j")
             end
+        elseif(lines_range[1] - 2 > 0) then
+            vim.api.nvim_input("d")
+            vim.api.nvim_input("kk")        
+            vim.api.nvim_input("p")        
+            vim.api.nvim_input("<ESC>")
+            vim.api.nvim_input("V")
+            for i=0,lines_range[4] - 1,1 do
+                vim.api.nvim_input("j")
+            end
         end
+
     end
     if(mode == "n") then
         vim.api.nvim_input("k")

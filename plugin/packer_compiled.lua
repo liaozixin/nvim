@@ -160,6 +160,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-floaterm",
     url = "https://github.com/voldikss/vim-floaterm"
   },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround",
+    url = "https://github.com/tpope/vim-surround"
+  },
   ["vscode.nvim"] = {
     loaded = true,
     path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vscode.nvim",

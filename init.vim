@@ -1,8 +1,8 @@
-" vim.g euqivalent of let g:
 " eg. vim.g.mapleader = "," is equivalent of let g:mapleader=","
-
 " vim.opt.encoding = "utf-8" is equivalent of set encoding=utf-8
+" vim.g euqivalent of let g:
 " vim.o for global options
+
 " vim.wo for window options
 " vim.bo for buffer options 
 " vim.fn is a table representing function

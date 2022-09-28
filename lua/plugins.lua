@@ -40,6 +40,7 @@ return require('packer').startup(function()
   use "lukas-reineke/indent-blankline.nvim"
   use 'p00f/nvim-ts-rainbow'
   use 'djoshea/vim-autoread'
+  use 'tpope/vim-surround'
 
   if packer_bootstrap then
     require('packer').sync()

@@ -81,6 +81,11 @@ keymap('', '<F9>', "<cmd>AsyncTask project-run<CR>", default_opts)
 keymap('n', '<F2>', "<cmd>TlistToggle<CR>", default_opts)
 
 
+--vim-surround
+--cs"' change " " to ' '
+--ds" del " "
+--ysiw] add [  ] to current world
+--yss{ add {  } to current line
 
 
 
