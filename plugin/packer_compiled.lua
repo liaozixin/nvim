@@ -105,6 +105,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
+  ["formatter.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\formatter.nvim",
+    url = "https://github.com/mhartington/formatter.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\indent-blankline.nvim",
@@ -154,6 +159,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-autoread",
     url = "https://github.com/djoshea/vim-autoread"
+  },
+  ["vim-easymotion"] = {
+    loaded = true,
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-easymotion",
+    url = "https://github.com/easymotion/vim-easymotion"
   },
   ["vim-floaterm"] = {
     loaded = true,
