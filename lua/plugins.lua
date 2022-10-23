@@ -41,7 +41,6 @@ return require('packer').startup(function()
   use 'p00f/nvim-ts-rainbow'
   use 'djoshea/vim-autoread'
   use 'tpope/vim-surround'
-  use 'mhartington/formatter.nvim'
   use 'easymotion/vim-easymotion'
 
 
