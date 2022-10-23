@@ -14,12 +14,10 @@ keymap("n", "H", "^", default_opts)
 keymap("n", "L", "$", default_opts)
 
 -- up a line 
-keymap("n", "<M-Up>", "kddpk", default_opts)
-keymap("v", "<M-Up>", "dkkp", default_opts)
+keymap("", "<M-Up>", "<cmd>LUpLines<CR>", default_opts)
 
 -- dowm a line
-keymap("n", "<M-Down>", "ddp", default_opts)
-keymap("v", "<M-Down>", "dp", default_opts)
+keymap("", "<M-Down>", "<cmd>LDownLines<CR>", default_opts)
 
 -- copy to system's clipboard
 keymap("v", "<C-c>", [["*y]], default_opts)
@@ -82,7 +80,17 @@ keymap('', '<F9>', "<cmd>AsyncTask project-run<CR>", default_opts)
 --taglist
 keymap('n', '<F2>', "<cmd>TlistToggle<CR>", default_opts)
 
+--easymotion
+vim.cmd([[
+    map  <Leader>w <Plug>(easymotion-bd-w)
+    nmap <Leader>w <Plug>(easymotion-overwin-w)
+]])
 
+--vim-surround
+--cs"' change " " to ' '
+--ds" del " "
+--ysiw] add [  ] to current world
+--yss{ add {  } to current line
 
 
 

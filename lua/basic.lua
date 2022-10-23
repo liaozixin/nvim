@@ -8,6 +8,7 @@ vim.opt.sidescrolloff = 8
 
 -- 相对行号
 vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- 高亮当前行
 vim.opt.cursorline = true
@@ -70,18 +71,4 @@ vim.o.splitright = true
 
 -- 显示tabline
 vim.o.showtabline = 2
-
---autocmd
-vim.cmd([[
-"format
-augroup _auto_format
-    autocmd!
-    autocmd BufWritePre *.c,*.cpp,*.cu,*.h,*.hpp,*.cuh,*.py :Format
-augroup end
-]])
-
-
-
-
-
 

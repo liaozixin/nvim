@@ -155,10 +155,20 @@ _G.packer_plugins = {
     path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-autoread",
     url = "https://github.com/djoshea/vim-autoread"
   },
+  ["vim-easymotion"] = {
+    loaded = true,
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-easymotion",
+    url = "https://github.com/easymotion/vim-easymotion"
+  },
   ["vim-floaterm"] = {
     loaded = true,
     path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-floaterm",
     url = "https://github.com/voldikss/vim-floaterm"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround",
+    url = "https://github.com/tpope/vim-surround"
   },
   ["vscode.nvim"] = {
     loaded = true,

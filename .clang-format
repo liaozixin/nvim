@@ -1,2 +1,14 @@
 BasedOnStyle: Google
 IndentWidth: 4
+AccessModifierOffset:	-4
+IndentPPDirectives: BeforeHash
+AlignConsecutiveAssignments: true
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterFunction: true
+    BeforeElse: true
+
+AlignConsecutiveMacros: AcrossEmptyLines
+
+
+
