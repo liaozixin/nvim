@@ -80,6 +80,11 @@ keymap('', '<F9>', "<cmd>AsyncTask project-run<CR>", default_opts)
 --taglist
 keymap('n', '<F2>', "<cmd>TlistToggle<CR>", default_opts)
 
+--easymotion
+vim.cmd([[
+    map  <Leader>w <Plug>(easymotion-bd-w)
+    nmap <Leader>w <Plug>(easymotion-overwin-w)
+]])
 
 --vim-surround
 --cs"' change " " to ' '
