@@ -42,7 +42,10 @@ return require('packer').startup(function()
   use 'djoshea/vim-autoread'
   use 'tpope/vim-surround'
   use 'easymotion/vim-easymotion'
-
+  use {
+  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   if packer_bootstrap then
     require('packer').sync()

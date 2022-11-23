@@ -86,6 +86,9 @@ vim.cmd([[
     nmap <Leader>w <Plug>(easymotion-overwin-w)
 ]])
 
+--telescope
+keymap('n', 'ff', "<cmd>Telescope find_files<CR>", default_opts)
+
 --vim-surround
 --cs"' change " " to ' '
 --ds" del " "
