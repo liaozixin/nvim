@@ -147,7 +147,7 @@ _G.packer_plugins = {
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
+    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   taglist = {
@@ -157,7 +157,7 @@ _G.packer_plugins = {
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
+    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["vim-autoread"] = {
