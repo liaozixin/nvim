@@ -93,4 +93,3 @@ vim.api.nvim_create_user_command(
     down_lines,
     {bang = true, desc = 'Down select lines'}
 )
-
