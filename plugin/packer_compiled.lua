@@ -147,7 +147,7 @@ _G.packer_plugins = {
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
+    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   taglist = {
@@ -157,7 +157,7 @@ _G.packer_plugins = {
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
+    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["vim-autoread"] = {
@@ -167,7 +167,7 @@ _G.packer_plugins = {
   },
   ["vim-easymotion"] = {
     loaded = true,
-    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-easymotion",
+    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-easymotion",
     url = "https://github.com/easymotion/vim-easymotion"
   },
   ["vim-floaterm"] = {
@@ -177,7 +177,7 @@ _G.packer_plugins = {
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "C:\\Users\\15711\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround",
+    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround",
     url = "https://github.com/tpope/vim-surround"
   },
   ["vscode.nvim"] = {
