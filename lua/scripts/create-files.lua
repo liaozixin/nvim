@@ -113,12 +113,6 @@ local create_file = function()
 
 end
 
-vim.api.nvim_create_user_command(
-    'CreateFile',
-    create_file,
-    {bang = true, desc = 'create file'}
-)
-
 return{
     core = core
 }

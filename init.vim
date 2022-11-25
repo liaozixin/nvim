@@ -24,7 +24,7 @@ lua require('plugin-config/indent-blankline')
 
 "my scripts
 lua require('scripts/move-lines')
-"lua require('scripts/cpp-tools/main')
+lua require('scripts/cpp-tools')
 
 lua require('keymapping')
 
