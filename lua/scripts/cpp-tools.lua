@@ -2,12 +2,12 @@ local scripts_path = vim.fn.stdpath('config')
 local api = vim.api
 scripts_path = scripts_path..[[/lua/scripts]]
 package.path = package.path..scripts_path..[[/?.lua]]
+local buf_path = vim.fn.expand('%:p:h')
+buf_path = buf_path..[[\]]
 
 
 local function create_file()
     local win, border_win
-    local buf_path = vim.fn.expand('%:p:h')
-    buf_path = buf_path..[[\]]
     local buf, border_buf
     local buf = api.nvim_create_buf(false, true)
     local width = api.nvim_get_option("columns")
@@ -79,7 +79,20 @@ end
 
 local function cpp_tools_create(buf)
     input = api.nvim_get_current_line()
-    print(input)
+    if (input == buf_path) then
+        print("Please input file name!")
+        return 
+    end
+    local input_len = string.len(input)
+    local str_begin, str_end = string.find(input, buf_path, 1)
+    local file_name = string.sub(input, str_end + 1, -1)
+
+    if (string.find(file_name, ".h", 1) or string.find(file_name, ".hpp", 1)) then 
+        local file = assert(io.open(input, 'w'))
+        file:write("#pragma once\n")
+        file:close()
+    end
+    print("Create "..file_name)
 end
 
 local function cpp_tools_close_win(win, border_win)
