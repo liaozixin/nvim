@@ -4,6 +4,9 @@ vim.g.maplocalleader= " "
 local keymap = vim.api.nvim_set_keymap
 local default_opts = {noremap = true, silent = true}
 
+-- source init.vim
+keymap("n", "<F1>", "<cmd>source %<CR>", default_opts)
+
 -- to normal mode
 keymap("i", "jj", "<ESC>", default_opts)
 
@@ -89,6 +92,8 @@ vim.cmd([[
 --telescope
 keymap('n', 'ff', "<cmd>Telescope find_files<CR>", default_opts)
 
+--CreateFile
+keymap('n', 'cf', "<cmd>CreateFile<CR>", default_opts)
 --vim-surround
 --cs"' change " " to ' '
 --ds" del " "
