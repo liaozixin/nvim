@@ -98,14 +98,18 @@ local function cpp_tools_create(buf, win, border_win)
         return 
     end
     local input_len = string.len(input)
-    print(input)
+--    print(input)
     local file_name = string.match(input, [[[^/][^/]+$]])
-    print(file_name)
+--    print(file_name)
     local dir = string.match(input,[[.+/]])
-    print(dir)
+--    print(dir)
 
     os.execute("python "..scripts_path.."/create_dir.py "..dir)
-    
+    if (file_name == nil) then
+        cpp_tools_close_win(win, border_win)
+        return
+    end
+
     if (string.match(file_name, "%.h") or string.match(file_name, "%.hpp")) then 
         local file = assert(io.open(input, 'w'))
         file:write("#pragma once\n")
