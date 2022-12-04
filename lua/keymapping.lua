@@ -94,6 +94,10 @@ keymap('n', 'ff', "<cmd>Telescope find_files<CR>", default_opts)
 
 --CreateFile
 keymap('n', 'cf', "<cmd>CreateFile<CR>", default_opts)
+
+--ImpFunction
+keymap('v', 'if', "<cmd>ImpFunction<CR>", default_opts)
+
 --vim-surround
 --cs"' change " " to ' '
 --ds" del " "
