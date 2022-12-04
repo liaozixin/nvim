@@ -166,7 +166,7 @@ local function imp_function()
         return
     end
     local file_full_name = vim.fn.expand("%:t")
-    local file_name = string.match(file_full_name, [[[^\.]+]])
+    local file_name = string.match(file_full_name, [[[^%.]+]])
     local file_path = vim.fn.expand("%:p:h")
     local file_ex_name = string.match(file_full_name, "%.h%w*$")
     if (not file_ex_name) then
@@ -237,6 +237,50 @@ local function imp_function()
     source_file:close()
     api.nvim_command('vs '..source_file_path)
 end
+
+local function switch_head_source()
+    local file_full_name = vim.fn.expand("%:t")
+    local file_name = string.match(file_full_name, [[[^%.]+]])
+    local file_path = vim.fn.expand("%:p:h")
+    local file_ex_name = string.match(file_full_name, "%.%w*$")
+    if (string.match(file_ex_name, "^%.h%w*$")) then
+        local source_file_path = file_path .. "/" .. file_name .. ".cpp"
+        local source_file = io.open(source_file_path, "r")
+        if (source_file) then
+            api.nvim_command('edit '..source_file_path)
+            source_file:close()
+            return
+        end
+        source_file_path = file_path .. "/" .. file_name .. ".c"
+        source_file = io.open(source_file_path, "r")
+        if (source_file) then
+            api.nvim_command('edit '..source_file_path)
+            source_file:close()
+            return
+        end
+    elseif (string.match(file_ex_name, "^.c%w*$")) then
+        local head_file_path = file_path .. "/" .. file_name .. ".hpp"
+        local head_file = io.open(head_file_path, "r")
+        if (head_file) then
+            api.nvim_command('edit '..head_file_path)
+            head_file:close()
+            return
+        end
+        head_file_path = file_path .. "/" .. file_name .. ".h"
+        head_file = io.open(head_file_path, "r")
+        if (head_file) then
+            api.nvim_command('edit '..head_file_path)
+            head_file:close()
+            return
+        end
+    end
+end
+
+api.nvim_create_user_command(
+    'SwitchHS',
+    switch_head_source,
+    {bang = true, desc = 'switch head file and source file'}
+)
 
 api.nvim_create_user_command(
     'CreateFile',

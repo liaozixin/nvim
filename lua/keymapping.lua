@@ -98,6 +98,9 @@ keymap('n', 'cf', "<cmd>CreateFile<CR>", default_opts)
 --ImpFunction
 keymap('v', 'if', "<cmd>ImpFunction<CR>", default_opts)
 
+--Switch head file and source file
+keymap('', '<F12>', "<cmd>SwitchHS<CR>", default_opts)
+
 --vim-surround
 --cs"' change " " to ' '
 --ds" del " "
