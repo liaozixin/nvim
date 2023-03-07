@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup{
   -- A list of parser names, or "all"
-  ensure_installed = {"c", "lua", "cpp", "cuda", "json", "python", "cmake", "vim" },
+  ensure_installed = {"c", "lua", "cpp", "cuda", "json", "cmake", "vim", "python" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -55,6 +55,12 @@ require'nvim-treesitter.configs'.setup{
         "#4b0080",
         
     }, 
+    playground = {
+        enable = true,
+        updatetime = 25,
+        disable = {},
+        persist_queries = false,
+    },
     --termcolors = { }, 
   }
 }

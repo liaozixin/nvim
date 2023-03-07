@@ -13,10 +13,12 @@ vim.cmd[[packadd packer.nvim]]
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'Mofiqul/vscode.nvim'
+  use 'folke/tokyonight.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
+  use 'nvim-treesitter/playground'
   use 'kyazdani42/nvim-web-devicons' -- optional, for file icons
   use 'nvim-lualine/lualine.nvim'
   use {
@@ -40,12 +42,14 @@ return require('packer').startup(function()
   use "lukas-reineke/indent-blankline.nvim"
   use 'p00f/nvim-ts-rainbow'
   use 'djoshea/vim-autoread'
-  use 'tpope/vim-surround'
+  -- use 'tpope/vim-surround'
   use 'easymotion/vim-easymotion'
   use {
   'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use 'rcarriga/nvim-notify'
+  use 'D:/Dev/nvim-cpptools'
 
   if packer_bootstrap then
     require('packer').sync()

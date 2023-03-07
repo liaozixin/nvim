@@ -115,6 +115,16 @@ _G.packer_plugins = {
     path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["nvim-cpptools"] = {
+    loaded = true,
+    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-cpptools",
+    url = "D:\\Dev\\nvim-cpptools"
+  },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-tree.lua",
@@ -145,6 +155,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  playground = {
+    loaded = true,
+    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\playground",
+    url = "https://github.com/nvim-treesitter/playground"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
@@ -160,6 +175,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
+  },
   ["vim-autoread"] = {
     loaded = true,
     path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-autoread",
@@ -174,11 +194,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-floaterm",
     url = "https://github.com/voldikss/vim-floaterm"
-  },
-  ["vim-surround"] = {
-    loaded = true,
-    path = "C:\\Users\\Polaris\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround",
-    url = "https://github.com/tpope/vim-surround"
   },
   ["vscode.nvim"] = {
     loaded = true,

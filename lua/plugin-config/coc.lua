@@ -1,5 +1,5 @@
 vim.cmd([[
-  let g:coc_global_extensions = ['coc-json', 'coc-clangd', 'coc-pyright'] 
+  let g:coc_global_extensions = ['coc-json', 'coc-clangd', 'coc-pyright', 'coc-sumneko-lua'] 
 
   autocmd CursorHold * silent call CocActionAsync('highlight')
   command! -nargs=0 Format :call CocActionAsync('format')

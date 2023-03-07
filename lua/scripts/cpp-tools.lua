@@ -1,3 +1,5 @@
+vim.notify = require("notify")
+
 local scripts_path = vim.fn.stdpath('config')
 local api = vim.api
 scripts_path = scripts_path..[[/lua/scripts]]
@@ -7,6 +9,12 @@ local home_path = os.getenv("HOMEPATH")
 local system_drive = os.getenv("SYSTEMDRIVE")
 home_path = system_drive..home_path
 home_path = string.gsub(home_path, [[\]], [[/]])
+
+local ds = require("data_structure")
+local tree = ds.tree:new(nil)
+tree:initTree("root", 1)
+local node = ds.tree:createNode("soon", 2)
+tree:insertNode(node, "root")
 
 local function create_file()
     buf_path = vim.fn.expand('%:p:h')
@@ -102,6 +110,9 @@ local function cpp_tools_create(buf, win, border_win)
     os.execute("python "..scripts_path.."/create_dir.py "..dir)
     if (file_name == nil) then
         cpp_tools_close_win(win, border_win)
+        vim.notify(dir, "info",{
+            title = "Create dir!",
+        })
         return
     end
 
@@ -114,6 +125,9 @@ local function cpp_tools_create(buf, win, border_win)
         api.nvim_input('<ESC>')
         api.nvim_input('o')
         api.nvim_input('<CR>')
+        vim.notify(input, "info",{
+            title = "Create header file!"
+        })
     elseif (string.match(file_name, "%.c") or 
             string.match(file_name, "%.cpp") or 
             string.match(file_name, "%.cu")) then
@@ -131,6 +145,9 @@ local function cpp_tools_create(buf, win, border_win)
             api.nvim_input('<ESC>')
             api.nvim_input('o')
             api.nvim_input('<CR>')
+            vim.notify(input, "info", {
+                title = "Create source file!"
+            })
             return
         end
 
@@ -146,6 +163,9 @@ local function cpp_tools_create(buf, win, border_win)
             api.nvim_input('<ESC>')
             api.nvim_input('o')
             api.nvim_input('<CR>')
+            vim.notify(input, "info", {
+                title = "Create source file!"
+            })
             return
         end
 
@@ -153,11 +173,17 @@ local function cpp_tools_create(buf, win, border_win)
         file:close()
         cpp_tools_close_win(win, border_win)
         api.nvim_command('edit '..input)
+        vim.notify(input, "info", {
+            title = "Create source file!"
+        })
     else
         local file = assert(io.open(input, 'w'))
         file:close()
         cpp_tools_close_win(win, border_win)
         api.nvim_command('edit '..input)
+        vim.notify(input, "info", {
+            title = "Create source file!"
+        })
     end
 end
 
@@ -170,7 +196,9 @@ local function imp_function()
     local file_path = vim.fn.expand("%:p:h")
     local file_ex_name = string.match(file_full_name, "%.h%w*$")
     if (not file_ex_name) then
-        print("Not CPP Head File!")
+        vim.notify("","error",{
+            title = "Not a c++ header file!"
+        })
         return
     end
 
@@ -181,61 +209,102 @@ local function imp_function()
         choose_end = choose_begin
         choose_begin = tem
     end
-    local class_name = nil
+    local func_info = {} 
+    local file_info = {}
+
+
     
-    for i = choose_begin, 1, -1 do
-        local str = api.nvim_buf_get_lines(0, i - 1, i, null)[1]
-        if (string.match(str, [[^class%s[%w_]+$]])) then 
-            class_name = string.match(str, [[[%w_]+$]])
-        end
-    end
 
-    if (class_name == nil) then
-        return
-    end
-    local source_file_path = file_path.."/"..file_name..".cpp"
-    local source_file = assert(io.open(source_file_path, "a+"))
-    local content = source_file:read('*all')
-    source_file:close()
-    source_file = assert(io.open(file_path.."/"..file_name..".cpp", "w+"))
-    if (not string.match(content, "#include%s*"..[[["<]+]]..file_full_name..[[[">]+]])) then
-        content = "#include "..[["]]..file_full_name..[["]]..content
-    end
-
-    local functions = api.nvim_buf_get_lines(0, choose_begin - 1, choose_end, null)
-    local func_imp
-    local func_tmp
-    for index, func in ipairs(functions) do
-        if (string.match(func, "~*"..class_name..[[%([%w_,%s]*%);$]])) then
-            func = string.match(func, "~*"..class_name..[[%([%w_,%s]*%)]])
-            func_tmp = func
-            func_tmp = string.gsub(func_tmp, "%(", "%%(")
-            func_tmp = string.gsub(func_tmp, "%)", "%%)")
-            if (not string.find(content, func_tmp)) then
-                func_imp = class_name.."::"..func.."\n{\n\n}"
-                content = content .. "\n\n" .. func_imp
-            end
-        elseif (string.match(func, "[%w_:]+%s".."[%w_]+".."%([%w_%s,]*%)%s*".."[%w]*;$")) then
-            func = string.match(func, "[%w_:]+%s".."[%w_]+".."%([%w_%s,]*%)%s*".."[%w]*")
-            func_tmp = func
-            func_tmp = string.gsub(func_tmp, "%(", "%%(")
-            func_tmp = string.gsub(func_tmp, "%)", "%%)")
-            local return_type_begin, return_type_end = string.find(func_tmp, "^[%w_:]+%s")
-            local return_type = string.sub(func_tmp, return_type_begin, return_type_end)
-            func_tmp = string.sub(func_tmp, return_type_end, -1)
-            func_tmp = string.gsub(func_tmp, "^%s", "")
-            
-            if (not string.find(content, return_type..class_name.."::"..func_tmp)) then
-                func = string.sub(func, return_type_end, -1)
-                func = string.gsub(func, "^%s", "")
-                func_imp = return_type..class_name.."::"..func.."\n{\n\n}"
-                content = content .. "\n\n" .. func_imp
-            end
-        end
-    end
-    source_file:write(content)
-    source_file:close()
-    api.nvim_command('vs '..source_file_path)
+    -- for i = choose_begin, 1, -1 do
+    --     local str = api.nvim_buf_get_lines(0, i - 1, i, null)[1]
+    --
+    --     if (string.match(str, [[^[%s_%w]*{]])) then
+    --         cal_brace = cal_brace + 1
+    --     elseif (string.match(str, [[[%s_%w]*}[;%s]*$]])) then
+    --         cal_brace = cal_brace - 1
+    --     end
+    --     if (string.match(str, [[class%s+[%w_]+%s*$]]) or 
+    --         string.match(str, [[class%s+[%w_]+%s*{%s*$]])) then 
+    --         
+    --         class_name = string.match(str, "[%w_]+%s*{*%s*$")
+    --         class_name = string.match(class_name, "^[%w_]+")
+    --         if (1 == cal_brace) then
+    --             in_class = true
+    --         end
+    --         choose_begin = i
+    --         break
+    --     end
+    -- end
+    -- cal_brace = 0
+    --
+    -- for i = choose_begin, 1, -1 do
+    --     local str = api.nvim_buf_get_lines(0, i - 1, i, null)[1]
+    --     if (string.match(str, "[%s_%w]*{")) then
+    --         cal_brace = cal_brace + 1
+    --     elseif (string.match(str, "[%s_%w]*}[;%s]*$")) then
+    --         cal_brace = cal_brace - 1
+    --     end
+    --     if (string.match(str, [[^namespace%s+[%w_]+%s*$]]) or 
+    --         string.match(str, [[^namespace%s+[%w_]+%s*{%s*$]])) then 
+    --         if (0 ~= cal_brace) then
+    --             namespace_name = string.match(str, "[%w_]+%s*{*$")
+    --             namespace_name = string.match(namespace_name, "^[%w_]+")
+    --         end
+    --     end
+    -- end
+    --
+    -- print(namespace_name)
+    --
+    -- if (nil == class_name and in_class) then
+    --     return
+    -- end
+    --
+    -- local source_file_path = file_path.."/"..file_name..".cpp"
+    -- local source_file = assert(io.open(source_file_path, "a+"))
+    -- local content = source_file:read('*all')
+    -- source_file:close()
+    -- source_file = assert(io.open(file_path.."/"..file_name..".cpp", "w+"))
+    -- if (not string.match(content, "#include%s*"..[[["<]+]]..file_full_name..[[[">]+]])) then
+    --     content = "#include "..[["]]..file_full_name..[["]]..content
+    -- end
+    --
+    --
+    -- local functions = api.nvim_buf_get_lines(0, choose_begin - 1, choose_end, null)
+    -- local func_imp
+    -- local func_tmp
+    -- for index, func in ipairs(functions) do
+    --     if (string.match(func, "~*"..class_name..[[%([%w_,%s]*%);$]])) then
+    --         func = string.match(func, "~*"..class_name..[[%([%w_,%s]*%)]])
+    --         func_tmp = func
+    --         func_tmp = string.gsub(func_tmp, "%(", "%%(")
+    --         func_tmp = string.gsub(func_tmp, "%)", "%%)")
+    --         if (not string.find(content, func_tmp)) then
+    --             func_imp = class_name.."::"..func.."\n{\n\n}"
+    --             content = content .. "\n\n" .. func_imp
+    --         end
+    --     elseif (string.match(func, "[%w_:]+%s".."[%w_]+".."%([%w_%s,]*%)%s*".."[%w]*;$")) then
+    --         func = string.match(func, "[%w_:]+%s".."[%w_]+".."%([%w_%s,]*%)%s*".."[%w]*")
+    --
+    --         func_tmp = func
+    --         func_tmp = string.gsub(func_tmp, "%(", "%%(")
+    --         func_tmp = string.gsub(func_tmp, "%)", "%%)")
+    --
+    --         local return_type_begin, return_type_end = string.find(func_tmp, "^[%w_:]+%s")
+    --         local return_type = string.sub(func_tmp, return_type_begin, return_type_end)
+    --         func_tmp = string.sub(func_tmp, return_type_end, -1)
+    --         func_tmp = string.gsub(func_tmp, "^%s", "")
+    --         
+    --         if (not string.find(content, return_type..class_name.."::"..func_tmp)) then
+    --             func = string.sub(func, return_type_end, -1)
+    --             func = string.gsub(func, "^%s", "")
+    --             func_imp = return_type..class_name.."::"..func.."\n{\n\n}"
+    --             content = content .. "\n\n" .. func_imp
+    --         end
+    --     end
+    -- end
+    -- source_file:write(content)
+    -- source_file:close()
+    -- api.nvim_command('vs '..source_file_path)
 end
 
 local function switch_head_source()

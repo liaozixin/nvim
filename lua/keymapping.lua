@@ -4,9 +4,6 @@ vim.g.maplocalleader= " "
 local keymap = vim.api.nvim_set_keymap
 local default_opts = {noremap = true, silent = true}
 
--- source init.vim
-keymap("n", "<F1>", "<cmd>source %<CR>", default_opts)
-
 -- to normal mode
 keymap("i", "jj", "<ESC>", default_opts)
 
@@ -17,10 +14,10 @@ keymap("n", "H", "^", default_opts)
 keymap("n", "L", "$", default_opts)
 
 -- up a line 
-keymap("", "<M-Up>", "<cmd>LUpLines<CR>", default_opts)
+keymap("", "<M-Up>", [[<cmd>lua require('cpptool').move_lines("up")<CR>]], default_opts)
 
 -- dowm a line
-keymap("", "<M-Down>", "<cmd>LDownLines<CR>", default_opts)
+keymap("", "<M-Down>", [[<cmd>lua require('cpptool').move_lines("down")<CR>]], default_opts)
 
 -- copy to system's clipboard
 keymap("v", "<C-c>", [["*y]], default_opts)
@@ -54,6 +51,7 @@ keymap("n", "t", "<cmd>wa!<CR><cmd>FloatermToggle<CR>", default_opts)
 keymap("t", "T", [[<C-\><C-n><cmd>FloatermToggle<CR>]], default_opts)
 
 --coc
+keymap('', "<F1>", "<cmd>CocRestart<CR>", default_opts)
 vim.cmd([[
   inoremap <silent><expr> <C-e> coc#pum#visible() ? coc#pum#cancel() : "\<C-e>"
   inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
@@ -77,7 +75,7 @@ vim.cmd([[
 
 --asynctasks
 keymap('', '<F5>', "<cmd>AsyncTask compilefile-build<CR>", default_opts)
-keymap('', '<F4>', "<cmd>AsyncTask file-build<CR>", default_opts)
+keymap('', '<F4>', "<cmd>AsyncTask file-run<CR>", default_opts)
 keymap('', '<F9>', "<cmd>AsyncTask project-run<CR>", default_opts)
 
 --taglist
@@ -93,13 +91,14 @@ vim.cmd([[
 keymap('n', 'ff', "<cmd>Telescope find_files<CR>", default_opts)
 
 --CreateFile
-keymap('n', 'cf', "<cmd>CreateFile<CR>", default_opts)
+keymap('n', 'cf', [[<cmd>lua require("cpptool").create_file()<CR>]], default_opts)
 
 --ImpFunction
-keymap('v', 'if', "<cmd>ImpFunction<CR>", default_opts)
+keymap('v', 'if', [[<cmd>lua require("cpptool").create_func_def()<CR>]], default_opts)
 
 --Switch head file and source file
 keymap('', '<F12>', "<cmd>SwitchHS<CR>", default_opts)
+
 
 --vim-surround
 --cs"' change " " to ' '

@@ -8,7 +8,7 @@ vim.opt.sidescrolloff = 8
 
 -- 相对行号
 vim.opt.number = true
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 -- 高亮当前行
 vim.opt.cursorline = true

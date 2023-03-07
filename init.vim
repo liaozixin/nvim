@@ -8,8 +8,8 @@
 " vim.fn is a table representing function
 " vim.api is colleciton of API functions
 " for the most part, you just use vim.opt to set value
-lua require('basic')
 lua require('plugins')
+lua require('basic')
 
 lua require('plugin-config/nvim-treesitter')
 lua require('plugin-config/nvim-lualine')
@@ -21,13 +21,10 @@ lua require('plugin-config/asynctask')
 lua require('plugin-config/taglist')
 lua require('plugin-config/nvim-ts-context-commentstring')
 lua require('plugin-config/indent-blankline')
-
-"my scripts
-lua require('scripts/move-lines')
-lua require('scripts/cpp-tools')
+lua vim.notify = require('notify')
 
 lua require('keymapping')
 
-colorscheme vscode
+colorscheme tokyonight-night
 
 
