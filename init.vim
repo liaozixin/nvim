@@ -24,6 +24,7 @@ lua require('plugin-config/indent-blankline')
 lua vim.notify = require('notify')
 
 lua require('keymapping')
+lua require('autocmd')
 
 colorscheme tokyonight-night
 
