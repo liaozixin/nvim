@@ -72,5 +72,8 @@ vim.o.splitright = true
 -- 显示tabline
 vim.o.showtabline = 2
 
+--filetype
+vim.o.filetype = true
+
 -- 设置目录
 --vim.o.autochdir = true
