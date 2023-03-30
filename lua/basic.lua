@@ -1,3 +1,6 @@
+-- MAX file size
+_max_filesize = 100 * 1024
+
 -- utf8
 vim.opt.encoding = "UTF-8"
 vim.opt.fileencoding = 'utf-8'
