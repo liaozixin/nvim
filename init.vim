@@ -21,6 +21,7 @@ lua require('plugin-config/asynctask')
 lua require('plugin-config/taglist')
 lua require('plugin-config/nvim-ts-context-commentstring')
 lua require('plugin-config/indent-blankline')
+lua require('plugin-config/telescope')
 lua vim.notify = require('notify')
 
 lua require('keymapping')

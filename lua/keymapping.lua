@@ -45,6 +45,7 @@ keymap('', "<C-n>", "<cmd>NvimTreeToggle<CR>", default_opts);
 --bufferline
 keymap('', '<M-Left>', ':BufferLineCyclePrev<CR>', default_opts)
 keymap('', '<M-Right>', ':BufferLineCycleNext<CR>', default_opts)
+keymap('', '<leader>b', ':BufferLinePickClose<CR>', default_opts)
 
 --vim-floaterm
 keymap("n", "t", "<cmd>wa!<CR><cmd>FloatermToggle<CR>", default_opts)

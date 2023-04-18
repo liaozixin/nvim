@@ -2,6 +2,9 @@
 _max_filesize = 100 * 1024
 _max_filelines = 1500
 
+--补全菜单
+vim.opt.wildmenu = true
+
 -- utf8
 vim.opt.encoding = "UTF-8"
 vim.opt.fileencoding = 'utf-8'
